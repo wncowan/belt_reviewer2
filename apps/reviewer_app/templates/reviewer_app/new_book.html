@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    {% load static %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- The line above tells Django to be ready to listen for static files -->
+    <link rel="stylesheet" href="{% static 'reviewer_app/css/new_book.css' %}" media="screen" title="no title" charset="utf-8">
+    <!-- Put the static files in the static folder inside your app.  Django collects files within all static folders and puts them within a single folder -->
+    <script src="{% static 'reviewer_app/js/new_book.js' %}"></script>
+</head>
+
+<body>
+    {% comment %} <h1>Add a New Book Title and a Review:</h1>
+    <form action="/books/create" method="post">
+        {% csrf_token %}
+        <label for="title">Book Title:</label>
+        <input type="text" name="title">
+        <label for="author">Author:</label>
+        <input type="text" name="author">
+        <label for="review">Review:</label>
+        <input type="text" name="review">
+        <label for="rating">Rating:</label>
+        <input type="text" name="rating">
+        <input type="submit" value="Add Books and Review">
+    </form> {% endcomment %}
+
+    <div class="container">
+        <div class="row">
+        <h2>Book</h2>
+        <table width="100%" border="0">
+        <div class="col-md-9 col-md-offset-0">
+            <tr>
+            <td width="77%">
+                <div class="">
+                <form class="form-horizontal" action="create" method="post">
+                {% csrf_token %}
+                <fieldset>
+
+            
+                    <!-- Title input-->
+                    <div class="form-group">
+                    <label class="col-md-3 control-label" for="title">Title</label>
+                    <div class="col-md-9">
+                        <input id="title" name="title" type="text" placeholder="Your Title" class="form-control">
+                    </div>
+                    </div>
+            
+                    <!-- Email input-->
+                    <div class="form-group">
+                    <label class="col-md-3 control-label" for="author">Author</label>
+                    <div class="col-md-9">
+                        <input id="author" name="author" type="text" placeholder="book author" class="form-control">
+                    </div>
+                    </div>
+            
+                    <!-- Review body -->
+                    <div class="form-group">
+                    <label class="col-md-3 control-label" for="review">Review</label>
+                    <div class="col-md-9">
+                        <textarea class="form-control" id="review" name="review" placeholder="Please enter your review here..." rows="5"></textarea>
+                    </div>
+                    </div>
+
+
+                    <!-- Rating -->
+                    <div class="form-group">
+                    <label class="col-md-3 control-label" for="rating">Your rating</label>
+                    <div class="col-md-9">
+                        <input id="input-21e" name="rating" value="0" type="number" class="rating" min=0 max=5 step=0.5 data-size="xs" >
+                    </div>
+                    </div>
+                </fieldset>
+            </td>
+
+            </tr>
+
+            <tr>
+                <td align="center" valign="top" width="23%">
+                <!-- Form actions -->
+                    <div class="form-group">
+                        <div class="col-md-12 text-left">
+                            {% comment %} <img src="https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjm6O7n__zcAhVLRK0KHdaEB7kQjRx6BAgBEAU&url=https%3A%2F%2Fwww.deviantart.com%2Fdoge-shibe&psig=AOvVaw2vz4n7QZJRYyTE_YuxItfl&ust=1534901484975801" height="140px" width="270px"/><br/> {% endcomment %}
+                            <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                            <button type="reset" class="btn btn-default btn-md">Clear</button>
+                        </div>
+                    </div>
+                    </form>
+                    </div>
+                    </div>
+                </td>
+            
+            </tr>
+
+
+        </table>
+    </div>
+
+    {% comment %} <div class="container">
+        <div class="row">
+            <h2>
+                Featured Testimonials</h2>
+            <div class="col-md-6">
+                <div class="blockquote-box clearfix">
+                    <div class="square pull-left">
+                        <img src="http://placehold.it/60/8e44ad/FFF&text=B" alt="" class="" />
+                    </div>
+                    <h4>
+                        John Doe</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                        ante.
+                    </p>
+                </div>
+                <div class="blockquote-box blockquote-primary clearfix">
+                    <div class="square pull-left">
+                        <span class="glyphicon glyphicon-music glyphicon-lg"></span>
+                    </div>
+                    <h4>
+                        John Doe</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                        ante. <a href="http://www.jquery2dotnet.com/search/label/jquery">jquery2dotnet</a>
+                    </p>
+                </div>
+                <div class="blockquote-box blockquote-success clearfix">
+                    <div class="square pull-left">
+                        <span class="glyphicon glyphicon-tree-conifer glyphicon-lg"></span>
+                    </div>
+                    <h4>
+                        John Doe</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                        ante.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="blockquote-box blockquote-info clearfix">
+                    <div class="square pull-left">
+                        <span class="glyphicon glyphicon-info-sign glyphicon-lg"></span>
+                    </div>
+                    <h4>
+                        John Doe</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                        ante.
+                    </p>
+                </div>
+                <div class="blockquote-box blockquote-warning clearfix">
+                    <div class="square pull-left">
+                        <span class="glyphicon glyphicon-warning-sign glyphicon-lg"></span>
+                    </div>
+                    <h4>
+                        John Doe</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                        ante.
+                    </p>
+                </div>
+                <div class="blockquote-box blockquote-danger clearfix">
+                    <div class="square pull-left">
+                        <span class="glyphicon glyphicon-record glyphicon-lg"></span>
+                    </div>
+                    <h4>
+                        John Doe</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a
+                        ante.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div> {% endcomment %}
+
+</body>
+
+</html>

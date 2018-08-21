@@ -1,0 +1,106 @@
+{% comment %} <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ----------> {% endcomment %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+    <head>
+        {% load static %}
+        <meta charset="UTF-8" />
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  -->
+        <title>Login and Registration Form For Belt Reviewer</title>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <link rel="stylesheet" href="{% static 'reviewer_app/css/login_registration.css' %}" media="screen" title="no title" charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="{% static 'reviewer_app/js/main.js' %}"></script>
+    </head>
+    <body>
+        <div class="container">
+           
+            <header>
+                <h1>Book Reviewer</h1>
+				
+            </header>
+            <section>				
+                <div id="container_demo" >
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+                            <form  action="login" method="post" autocomplete="on" id="login_form"> 
+                                {% csrf_token %}
+                                <h1>Log in</h1> 
+                                <p> 
+                                    <label for="login_email" class="uname" > Email </label>
+                                    <input id="login_email" name="login_email" required="required" type="text" placeholder="myemail or mymail@mail.com"/>
+                                </p>
+                                <p> 
+                                    <label for="login_password" class="youpasswd"> Your password </label>
+                                    <input id="login_password" name="login_password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                </p>
+                                <p class="keeplogin"> 
+									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+									<label for="loginkeeping">Keep me logged in</label>
+								</p>
+                                <p class="login button"> 
+                                   <a href="http://cookingfoodsworld.blogspot.in/" target="_blank" ></a>
+								</p>
+                                <p class="change_link">
+									Not a member yet ?
+									<a href="#toregister" class="to_register">Join us</a>
+								</p>
+                            </form>
+                        </div>
+
+                        <div id="register" class="animate form">
+                            <form  action="create" method="post" autocomplete="on"> 
+                                {% csrf_token %}
+                                <h1> Sign up </h1> 
+                                <p> 
+                                    <label for="username" class="uname" >Your username</label>
+                                    <input id="username" name="username" required="required" type="text" placeholder="mysuperusername690" />
+                                </p>
+                                <p> 
+                                    <label for="alias" class="youmail"  > Your alias</label>
+                                    <input id="alias" name="alias" required="required" type="text" placeholder="my_alias"/> 
+                                </p>
+                                <p> 
+                                    <label for="email" class="youmail"  > Your email</label>
+                                    <input id="email" name="email" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+                                </p>
+                                <p> 
+                                    <label for="password" class="youpasswd" >Your password </label>
+                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                </p>
+                                <p> 
+                                    <label for="confirm_password" class="youpasswd" >Please confirm your password </label>
+                                    <input id="confirm_password" name="confirm_password" required="required" type="password" placeholder="eg. X8df!90EO"/>
+                                </p>
+                                 {%for message in messages%}
+                                <p>{{message}}</p>
+                                {%endfor%}
+                                <p class="signin button"> 
+									<input type="submit" value="Sign up"/> 
+								</p>
+                                <p class="change_link">  
+									Already a member ?
+									<a href="#tologin" class="to_register"> Go and log in </a>
+								</p>
+                            </form>
+                        </div>
+						
+                    </div>
+                </div>  
+            </section>
+        </div>
+    </body>
+</html>
